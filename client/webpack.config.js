@@ -13,13 +13,12 @@ const loaderPlugin = new webpack.LoaderOptionsPlugin({
     })
 
 module.exports = {
-    entry: [
-        './javascripts/app.js',
-        './stylesheets/app.scss'
-    ],
+    entry: {
+        app: './javascripts/app',
+        search_organizations: './javascripts/search_organizations.js'},
     output: {
         path: resolve('../priv/static/js'),
-        filename: 'app.js'
+        filename: '[name].js'
     },
     resolve: {
         modules: [resolve('./node_modules')],
