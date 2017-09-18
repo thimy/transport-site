@@ -1,6 +1,16 @@
 const { resolve }       = require('path')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const extractSass       = new ExtractTextPlugin({ filename: '../css/app.css', allChunks: true })
+var webpack = require('webpack')
+const riotPlugin = new webpack.ProvidePlugin({riot: 'riot'})
+const loaderPlugin = new webpack.LoaderOptionsPlugin({
+        options: {
+            tslint: {
+                emitErrors: true,
+                failOnHint: true
+            }
+        }
+    })
 
 module.exports = {
     entry: [
@@ -23,7 +33,7 @@ module.exports = {
         },
         extensions: ['.js', '.scss']
     },
-    plugins: [extractSass],
+    plugins: [extractSass, riotPlugin, loaderPlugin],
     devtool: 'source-map',
     module: {
         rules: [{
