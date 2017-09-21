@@ -2,19 +2,12 @@ const { resolve }       = require('path')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const extractSass       = new ExtractTextPlugin({ filename: '../css/app.css', allChunks: true })
 var webpack = require('webpack')
-const riotPlugin = new webpack.ProvidePlugin({riot: 'riot'})
-const loaderPlugin = new webpack.LoaderOptionsPlugin({
-    options: {
-        tslint: {
-            emitErrors: true,
-            failOnHint: true
-        }
-    })
 
 module.exports = {
     entry: {
-        app: './javascripts/app',
-        search_organizations: './javascripts/search_organizations.js'},
+        app: './javascripts/app.js',
+        search_organizations: './javascripts/search_organizations.js',
+        stylesheets: './stylesheets/app.scss'},
     output: {
         path: resolve('../priv/static/js'),
         filename: '[name].js'
@@ -31,7 +24,7 @@ module.exports = {
         },
         extensions: ['.js', '.scss']
     },
-    plugins: [extractSass, riotPlugin, loaderPlugin],
+    plugins: [extractSass],
     devtool: 'source-map',
     module: {
         rules: [{
@@ -83,6 +76,14 @@ module.exports = {
                     outputPath: '../fonts/'
                 }
             }]
-        }]
+        }, {
+        test: /\.tag$/,
+        exclude: /node_modules/,
+        loader: 'riot-tag-loader',
+        query: {
+          hot: false
+        }
+      }
+        ]
     }
 }
