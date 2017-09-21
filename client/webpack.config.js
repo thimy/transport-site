@@ -4,11 +4,10 @@ const extractSass       = new ExtractTextPlugin({ filename: '../css/app.css', al
 var webpack = require('webpack')
 const riotPlugin = new webpack.ProvidePlugin({riot: 'riot'})
 const loaderPlugin = new webpack.LoaderOptionsPlugin({
-        options: {
-            tslint: {
-                emitErrors: true,
-                failOnHint: true
-            }
+    options: {
+        tslint: {
+            emitErrors: true,
+            failOnHint: true
         }
     })
 

@@ -3,7 +3,7 @@
 <input type="search" value={ keyword }  onkeyup={ update_q } placeholder="recherche">
 </header>
 
-<ul>
+<ul class="organizations">
 <organization each={ organizations.slice(0, 10) } name={ name }/>
 </ul>
 

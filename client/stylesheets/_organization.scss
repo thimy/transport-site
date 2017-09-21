@@ -1,0 +1,25 @@
+search_organizations {
+  $width: 500px;
+  $lightblue: #e6e6fa;
+  $grey: #eee;
+
+  li {
+    border-bottom: 1px solid $lightblue;
+   }
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    padding-top: 50px;
+    width: $width;
+  }
+
+  input {
+    background: $grey;
+    border: 0 none;
+    border-radius: 10px;
+    padding: 10px;
+    width: $width;
+  }
+}
