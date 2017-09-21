@@ -26,17 +26,34 @@ module.exports = {
     devtool: 'source-map',
     module: {
         rules: [{
+            test: /\.(js|scss)$/,
+            exclude: [/node_modules/],
+            enforce: 'pre',
+            loader: 'import-glob-loader'
         }, {
             test: /\.tag$/,
             exclude: /node_modules/,
-            loader: 'riot-tag-loader'
+            enforce: 'pre',
+            loader: 'riot-tag-loader',
+            query: {
+                type: 'es6'
+            }
+        }, {
+            test: /\.tag$/,
+            exclude: [/node_modules/],
+            use: {
+                loader: 'babel-loader',
+                options: {
+                    presets: ['es2015-riot']
+                }
+            }
         }, {
             test: /\.js$/,
             exclude: [/node_modules/],
             use: {
                 loader: 'babel-loader',
                 options: {
-                    presets: ['es2017']
+                    presets: ['es2015']
                 }
             }
         }, {
@@ -55,11 +72,6 @@ module.exports = {
                     }
                 }]
             })
-        }, {
-            test: /\.(js|scss)$/,
-            exclude: [/node_modules/],
-            enforce: 'pre',
-            loader: 'import-glob-loader'
         }, {
             test: /\.(jpe?g|png|gif|svg)$/,
             exclude: [/font-awesome/],

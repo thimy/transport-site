@@ -13,7 +13,7 @@ self.organizations = []
 self.keyword = ''
 self.searching = false
 
-fetch_orgs = function() {
+var fetch_orgs = function() {
     if (self.searching)
        return
     self.searching = true
@@ -29,7 +29,7 @@ fetch_orgs = function() {
         })
 }
 
-update_q = function(e) {
+var update_q = function(e) {
     self.keyword = e.target.value
     fetch_orgs()
 }
