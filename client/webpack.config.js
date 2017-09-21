@@ -1,16 +1,15 @@
 const { resolve }       = require('path')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const extractSass       = new ExtractTextPlugin({ filename: '../css/app.css', allChunks: true })
-var webpack = require('webpack')
 
 module.exports = {
-    entry: {
-        app: './javascripts/app.js',
-        search_organizations: './javascripts/search_organizations.js',
-        stylesheets: './stylesheets/app.scss'},
+    entry: [
+        './javascripts/app.js',
+        './stylesheets/app.scss'
+    ],
     output: {
         path: resolve('../priv/static/js'),
-        filename: '[name].js'
+        filename: 'app.js'
     },
     resolve: {
         modules: [resolve('./node_modules')],
@@ -21,13 +20,17 @@ module.exports = {
             './images/marker-icon.png$': resolve('./node_modules/leaflet/dist/images/marker-icon.png'),
             './images/marker-icon-2x.png$': resolve('./node_modules/leaflet/dist/images/marker-icon-2x.png'),
             './images/marker-shadow.png$': resolve('./node_modules/leaflet/dist/images/marker-shadow.png')
-        },
-        extensions: ['.js', '.scss']
+        }
     },
     plugins: [extractSass],
     devtool: 'source-map',
     module: {
         rules: [{
+        }, {
+            test: /\.tag$/,
+            exclude: /node_modules/,
+            loader: 'riot-tag-loader'
+        }, {
             test: /\.js$/,
             exclude: [/node_modules/],
             use: {
@@ -76,14 +79,6 @@ module.exports = {
                     outputPath: '../fonts/'
                 }
             }]
-        }, {
-        test: /\.tag$/,
-        exclude: /node_modules/,
-        loader: 'riot-tag-loader',
-        query: {
-          hot: false
-        }
-      }
-        ]
+        }]
     }
 }
