@@ -24,7 +24,7 @@ defmodule TransportWeb.Router do
 
     scope "/login" do
       get "/", SessionController, :new
-      get "/login/explanation", PageController, :login
+      get "/explanation", PageController, :login
       get "/oauth/datagouvfr/callback", SessionController, :create
     end
 
