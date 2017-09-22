@@ -3,6 +3,7 @@ const webpack           = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const extractSass       = new ExtractTextPlugin({ filename: '../css/app.css', allChunks: true })
 const fetchPolyfill     = new webpack.ProvidePlugin({ fetch: 'imports-loader?this=>global!exports-loader?global.fetch!whatwg-fetch' })
+const processEnv        = new webpack.DefinePlugin({ 'process.env': { 'DATAGOUVFR_SITE': JSON.stringify(process.env.DATAGOUVFR_SITE) } })
 
 module.exports = {
     entry: [
@@ -26,7 +27,8 @@ module.exports = {
     },
     plugins: [
         extractSass,
-        fetchPolyfill
+        fetchPolyfill,
+        processEnv
     ],
     devtool: 'source-map',
     module: {
