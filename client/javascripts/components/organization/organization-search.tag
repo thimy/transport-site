@@ -18,7 +18,7 @@ var fetch_orgs = function() {
        return
     self.searching = true
     self.old_keyword = self.keyword
-    window.fetch('http://udata.transport/api/1/organizations/?q=' + self.old_keyword)
+    fetch('http://udata.transport/api/1/organizations/?q=' + self.old_keyword)
         .then(function(response) { return response.json() })
         .then(function(data) {
             var orgs = data.data;

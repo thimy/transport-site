@@ -1,6 +1,8 @@
 const { resolve }       = require('path')
+const webpack           = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const extractSass       = new ExtractTextPlugin({ filename: '../css/app.css', allChunks: true })
+const fetchPolyfill     = new webpack.ProvidePlugin({ fetch: 'imports-loader?this=>global!exports-loader?global.fetch!whatwg-fetch' })
 
 module.exports = {
     entry: [
@@ -22,7 +24,10 @@ module.exports = {
             './images/marker-shadow.png$': resolve('./node_modules/leaflet/dist/images/marker-shadow.png')
         }
     },
-    plugins: [extractSass],
+    plugins: [
+        extractSass,
+        fetchPolyfill
+    ],
     devtool: 'source-map',
     module: {
         rules: [{

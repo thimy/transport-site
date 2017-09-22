@@ -17,9 +17,11 @@
     "bourbon": "^5.0.0-beta.8",
     "bourbon-neat": "^2.1.0",
     "css-loader": "^0.28.4",
+    "exports-loader": "^0.6.4",
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^1.0.0",
     "font-awesome": "^4.7.0",
+    "imports-loader": "^0.7.1",
     "import-glob-loader": "^1.1.0",
     "leaflet": "^1.2.0",
     "node-sass": "^4.5.3",
@@ -29,6 +31,7 @@
     "riot-tag-loader": "^1.0.0",
     "sass-loader": "^6.0.5",
     "typeplate-starter-kit": "^3.0.2",
-    "webpack": "^3.5.6"
+    "webpack": "^3.5.6",
+    "whatwg-fetch": "2.0.3"
   }
 }
