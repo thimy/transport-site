@@ -19,6 +19,7 @@ defmodule TransportWeb.Router do
 
     get "/", PageController, :index
     get "/search_organizations", PageController, :search_organizations
+    get "/organizations/:slug", PageController, :organization
 
     # Authentication
 
