@@ -1,4 +1,4 @@
-<search_organizations>
+<organization-search>
 <header>
 <input type="search" value={ keyword }  onkeyup={ update_q } placeholder="recherche">
 </header>
@@ -36,4 +36,4 @@ var update_q = function(e) {
 
 fetch_orgs()
 </script>
-</search_organizations>
+</organization-search>
