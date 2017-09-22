@@ -1,11 +1,11 @@
 <organization-search>
-    <header>
+    <form role="search">
         <input type="search" value={ keyword }  onkeyup={ update_query } placeholder="recherche">
-    </header>
+    </form>
 
-    <ul class="organizations">
-        <organization each={ organizations.slice(0, 10) } name={ name }/>
-    </ul>
+    <section class="organizations">
+        <organization each={ organizations.slice(0, 10) } name={ name } description={ description }/>
+    </section>
 
     <script type="es6">
         this.organizations = []

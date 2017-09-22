@@ -3,23 +3,33 @@ organization-search {
   $lightblue: #e6e6fa;
   $grey: #eee;
 
-  li {
-    border-bottom: 1px solid $lightblue;
-   }
-
-  ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    padding-top: 50px;
-    width: $width;
-  }
-
   input {
     background: $grey;
     border: 0 none;
     border-radius: 10px;
     padding: 10px;
     width: $width;
+  }
+
+  section.organizations {
+    padding-top: 2em;
+    margin-left: 1em;
+    organization {
+      section {
+        border-bottom: 1px solid $lightblue;
+
+        h1 {
+          font-size: 1em;
+          text-align: left;
+          margin-bottom: 0.2em;
+          margin-top: 1.5em;
+        }
+
+        p {
+          margin: 0;
+          margin-left: 0.5em;
+        }
+      }
+    }
   }
 }
