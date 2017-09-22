@@ -1,39 +1,38 @@
 <organization-search>
-<header>
-<input type="search" value={ keyword }  onkeyup={ update_q } placeholder="recherche">
-</header>
+    <header>
+        <input type="search" value={ keyword }  onkeyup={ update_query } placeholder="recherche">
+    </header>
 
-<ul class="organizations">
-<organization each={ organizations.slice(0, 10) } name={ name }/>
-</ul>
+    <ul class="organizations">
+        <organization each={ organizations.slice(0, 10) } name={ name }/>
+    </ul>
 
-<script>
-var self = this
-self.organizations = []
-self.keyword = ''
-self.searching = false
+    <script type="es6">
+        this.organizations = []
+        this.keyword       = ''
+        this.searching     = false
 
-var fetch_orgs = function() {
-    if (self.searching)
-       return
-    self.searching = true
-    self.old_keyword = self.keyword
-    fetch(`${process.env.DATAGOUVFR_SITE}/api/1/organizations/?q=${self.old_keyword}`)
-        .then(function(response) { return response.json() })
-        .then(function(data) {
-            var orgs = data.data;
-            self.update({organizations: orgs})
-            self.searching = false
-            if (self.old_keyword != self.keyword)
-                fetch_orgs()
-        })
-}
+        this.fetch_orgs = () => {
+            if (this.searching) { return }
 
-var update_q = function(e) {
-    self.keyword = e.target.value
-    fetch_orgs()
-}
+            this.searching  = true
+            this.oldKeyword = this.keyword
 
-fetch_orgs()
-</script>
+            fetch(`${process.env.DATAGOUVFR_SITE}/api/1/organizations/?q=${this.oldKeyword}`)
+                .then(response => { return response.json() })
+                .then(data => {
+                    this.update({ organizations: data.data })
+                    this.searching = false
+
+                    if (this.oldKeyword !== this.keyword) {
+                        this.fetch_orgs()
+                    }
+                })
+        }
+
+        this.update_query = function(event) {
+            this.keyword = event.target.value
+            this.fetch_orgs()
+        }
+    </script>
 </organization-search>
