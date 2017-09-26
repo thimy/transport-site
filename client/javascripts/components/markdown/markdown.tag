@@ -1,19 +1,21 @@
 import showdown from 'showdown'
 
 <markdown>
-    <div></div>
-
     <script type="es6">
-        this.set = () => {
-            this.root.childNodes[0].innerHTML = convert(this.opts.content)
-        }
-        this.on('update', this.set)
-        this.on('mount', this.set)
+        this.converter = new showdown.Converter()
+        this.element   = document.createElement('div')
+        this.element.setAttribute('class', 'markdown')
+        this.root.appendChild(this.element)
 
-        var convert = (markdown) => {
-            var converter = new showdown.Converter()
-            return converter.makeHtml(markdown)
+        this.markdownify = (markdown) => {
+            return this.converter.makeHtml(markdown)
         }
+
+        this.parse = () => {
+            this.element.innerHTML = this.markdownify(this.opts.content)
+        }
+
+        this.on('mount', this.parse)
+        this.on('update', this.parse)
     </script>
-
 </markdown>
