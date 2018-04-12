@@ -17,8 +17,7 @@ defmodule Transport.DataValidation.Repository.FeedSourceRepository do
   """
   @spec execute(FindFeedSource.t) :: {:ok, FeedSource.t} | {:ok, nil} | {:error, any()}
   def execute(%FindFeedSource{project: %{id: project_id}, name: name}) when is_binary(project_id) and is_binary(name) do
-    with {:ok, %@res{status_code: 200, body: body}} <- @client.get(@endpoint <> "?projectId=#{project_id}"),
-         {:ok, feed_sources} <- Poison.decode(body, as: [%FeedSource{}]),
+    with {:ok, feed_sources} <- execute(%ListFeedSources{project: %{id: project_id}}),
          feed_source <- Enum.find(feed_sources, &(&1.name == name)) do
       {:ok, feed_source}
     else

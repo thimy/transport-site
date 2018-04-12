@@ -1,0 +1,47 @@
+<%= if get_flash(@conn, :info) do %>
+  <p class="message message--info"><%= get_flash(@conn, :info) %></p>
+<% end %>
+
+<%= if get_flash(@conn, :warning) do %>
+  <p class="message message--warning"><%= get_flash(@conn, :warning) %></p>
+<% end %>
+
+<%= if get_flash(@conn, :success) do %>
+  <p class="message message--success"><%= get_flash(@conn, :success) %></p>
+<% end %>
+
+<table>
+    <tr>
+      <th><b>Territoire</b></th>
+      <th><b>Slug</b></th>
+      <th><b>Validé ?</b></th>
+      <th></th>
+      <th></th>
+    </tr>
+
+  <%= for dataset <- @datasets do %>
+    <tr>
+      <td><%= dataset.spatial %></td>
+      <td><%= dataset.title %></td>
+      <td>
+        <%= if dataset.catalogue_id do %>
+          Oui
+        <% else %>
+          Nan
+        <% end %>
+      </td>
+      <td>
+        <%= form_for @conn, admin_dataset_path(@conn, :validate), fn f -> %>
+          <%= hidden_input(f, :slug, value: dataset.slug) %>
+          <%= submit "Valider" %>
+        <% end %>
+      </td>
+      <td>
+        <%= form_for @conn, admin_dataset_path(@conn, :fetch_validation), fn f -> %>
+          <%= hidden_input(f, :slug, value: dataset.slug) %>
+          <%= submit "Fetch" %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>

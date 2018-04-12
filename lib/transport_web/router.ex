@@ -65,6 +65,14 @@ defmodule TransportWeb.Router do
     end
 
     get "/logout", SessionController, :delete
+
+    # Admin dashboard
+
+    scope "/admin", Admin, as: :admin do
+      get "/datasets", DatasetController, :index
+      post "/datasets/validate", DatasetController, :validate
+      post "/datasets/fetch_validation", DatasetController, :fetch_validation
+    end
   end
 
   scope "/api", TransportWeb do
