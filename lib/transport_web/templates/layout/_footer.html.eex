@@ -1,7 +1,7 @@
 <footer class="footer" role="contentinfo" id="footer">
 
       <div class="mail__button">
-        <a href="#mail_form" >
+        <a href="#mail_form" aria-label="Contacter le support">
           <div class="footer--on"><i class="fas icon--envelope"></i></div>
         </a>
       </div>
