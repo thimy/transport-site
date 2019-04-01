@@ -42,7 +42,7 @@ defmodule Transport.Dataset do
 
   def type_to_str(type), do: type_to_str()[type]
 
-  def dataset_types, do: Map.keys(type_to_str())
+  def types, do: Map.keys(type_to_str())
 
   defp no_validations_query do
     from r in Resource,
@@ -207,6 +207,14 @@ defmodule Transport.Dataset do
   def datagouv_url(%__MODULE__{slug: slug}) do
     Path.join([System.get_env("DATAGOUVFR_SITE"), "datasets", slug])
   end
+
+  def count_by_type(type) do
+    query = from d in __MODULE__, where: d.type == ^type
+
+    Repo.aggregate(query, :count, :id)
+  end
+
+  def count_by_type(), do: for type <- __MODULE__.types(), into: %{}, do: {type, count_by_type(type)}
 
   ## Private functions
 
