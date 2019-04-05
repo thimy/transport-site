@@ -194,7 +194,8 @@ msgstr "Éditeurs d’applications, développeurs… : vous pouvez utiliser libr
 #, elixir-format
 msgid "reusers list description"
 msgstr "Les réutilisateurs listés ici sont ceux ayant déclaré une réutilisation sur la plate-forme. En savoir plus."
-=======
+
+#, elixir-format
 msgid "Deployment status"
 msgstr "État du déploiement"
 
