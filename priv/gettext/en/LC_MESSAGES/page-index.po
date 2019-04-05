@@ -194,3 +194,6 @@ msgstr "Application makers, developers…: you can freely reuse all datasets. Th
 #, elixir-format
 msgid "reusers list description"
 msgstr "Reusers listed here are the ones who declared one reuse on the platform."
+
+msgid "Ask for help"
+msgstr ""

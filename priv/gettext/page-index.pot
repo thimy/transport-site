@@ -194,3 +194,7 @@ msgstr ""
 #, elixir-format
 msgid "reusers list description"
 msgstr ""
+
+#, elixir-format
+msgid "Ask for help"
+msgstr ""
