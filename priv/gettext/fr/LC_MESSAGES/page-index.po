@@ -63,7 +63,7 @@ msgstr "Bornes de recharges de véhicules électriques"
 
 #, elixir-format
 msgid "Long distance coach"
-msgstr "Bus longue distance"
+msgstr "Autocars longue distance"
 
 #, elixir-format
 msgid "Public transit schedules"
@@ -194,7 +194,8 @@ msgstr "Éditeurs d’applications, développeurs… : vous pouvez utiliser libr
 #, elixir-format
 msgid "reusers list description"
 msgstr "Les réutilisateurs listés ici sont ceux ayant déclaré une réutilisation sur la plate-forme. En savoir plus."
-=======
+
+#, elixir-format
 msgid "Deployment status"
 msgstr "État du déploiement"
 
