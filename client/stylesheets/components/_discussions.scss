@@ -1,24 +1,45 @@
-.discussion {
-
-  .discussion-comment {
-    border-left: 5px solid #c9d3df;
-    background-color: #ebeff3;
-    padding: 1em;
-  }
-
-  .discussion-comment + .discussion-comment {
-    margin-top: 1em;
-  }
-
-  .discussion-comment__content p:last-child {
-    margin-bottom: 0;
-  }
-
-  textarea {
-    height: 10em;
-  }
-
-  .discussion__post {
-    padding-top: 2em;
-  }
+.discussion-comment__header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1em;
 }
+
+.discussion-comment__header h3 {
+  margin-bottom: 0;
+  margin-left: 1em;
+}
+
+.discussion-author__avatar {
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+}
+
+.discussion-author__avatar.empty {
+  background: $grey;
+}
+
+// .discussion {
+
+//   .discussion-comment {
+//     border-left: 5px solid #c9d3df;
+//     background-color: #ebeff3;
+//     padding: 1em;
+//   }
+
+//   .discussion-comment + .discussion-comment {
+//     margin-top: 1em;
+//   }
+
+//   .discussion-comment__content p:last-child {
+//     margin-bottom: 0;
+//   }
+
+//   textarea {
+//     height: 10em;
+//   }
+
+//   .discussion__post {
+//     padding-top: 2em;
+//   }
+// }

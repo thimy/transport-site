@@ -1,11 +1,13 @@
-<div class="container">
-    <div class="panel">
-        <h4><%= @resource.title %></h4>
-        <div class="shortlist__link shortlist__link--download">
-                <i class="icon icon--download" aria-hidden="true"></i>
-                <%= link(dgettext("download-link", "Download"),
-                        to: @resource.url,
-                        role: "link") %>
-        </div>
-    </div>
+<div class="panel resource-panel">
+  <div class="label"><%= @resource.format %></div>
+  <h3><%= @resource.title %></h3>
+  <a href="@resource.url" class="button-outline primary small shortlist__link shortlist__link--download">
+    <i class="icon icon--download" aria-hidden="true"></i>
+    <%= dgettext("download-link", "Download") %>
+  </a>
+  <a href="<%= resource_path(@conn, :details, @resource.id) %>" class="button small shortlist__link shortlist__link--download" role="link">
+    <i class="icon icon--info fa-info" aria-hidden="true"></i>
+    Voir les détails
+  </a>
+  </button>
 </div>

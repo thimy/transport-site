@@ -1,14 +1,23 @@
 <div class="discussion" id="discussion-<%= @discussion["id"] %>">
-  <h3><i class="fas fa-comments"></i> <%= @discussion["title"] %> </h3>
-
-  <%= for comment <- @discussion["discussion"] do %>
-  <div class="discussion-comment panel" >
-      <div class="discussion-comment__header">
+  <div class="discussion__header">
+    <div class="discussion__header-info">
+      <h3><%= @discussion["title"] %></h3>
         <a href="<%= comment["posted_by"]["page"] %>" >
           <%= comment["posted_by"]["first_name"] %> <%= comment["posted_by"]["last_name"] %>
         </a>
         <span><%= dgettext("page-dataset-details", "Posted on") %></span>
         <span> <%= format_date comment["posted_on"] %></span>
+    </div>
+  </div>
+
+  <%= for comment <- @discussion["discussion"] do %>
+  <div class="discussion-comment" >
+      <div class="discussion-comment__header">
+        <%= if @discussion["user"]["avatar_thumbnail"] do %>
+          <img class="discussion-op__avatar" src="<%= @discussion["user"]["avatar_thumbnail"] %>" />
+        <%= else %>
+          <div class="discussion-op__avatar empty"></div>
+        <%= end %>
       </div>
       <div class="discussion-comment__content">
         <%= raw Earmark.as_html!(comment["content"]) %>

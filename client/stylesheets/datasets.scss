@@ -11,3 +11,73 @@
 .side-pane img {
   max-width: 100%;
 }
+
+.dataset__header {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 3em;
+  justify-content: flex-start;
+}
+
+.dataset__header dl {
+  margin: 0;
+}
+
+.dataset__header dl + dl {
+  margin-left: 2em;
+}
+
+.paragraph {
+  background-color: $white;
+  padding: 0.25em 1em;
+}
+
+.dataset__block {
+  margin-top: 3em;
+}
+
+.dataset-details__resources .panel {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  h3 {
+    margin: 0;
+    font-size: 1em;
+  }
+}
+
+.panel.resource-panel {
+  padding: 0.5em;
+  border-radius: 0;
+  border: 1px solid $lighter-grey;
+  display: flex;
+  align-items: center;
+
+  &.resource-panel:hover {
+    border-color: $blue;
+  }
+
+  .label {
+    flex-shrink: 1;
+  }
+
+  h3 {
+    flex-grow: 1;
+    margin-left: 1em;
+  }
+
+  .button,
+  .button-outline {
+    margin: 0.25em;
+  }
+
+  .button a {
+    color: $white;
+    text-decoration: none;
+  }
+
+  .button-outline a {
+    text-decoration: none;
+  }
+}
